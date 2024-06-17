@@ -10,7 +10,7 @@ args = parser.parse_args()
 
 
 # set scan parameters
-def initializeArguments(target, ports:str = "1-1024", threads:int = 10):
+def initializeArguments(target, ports:str, threads:int):
 
     scanTarget = target
 
@@ -27,6 +27,7 @@ def initializeArguments(target, ports:str = "1-1024", threads:int = 10):
 
 
 target, ports, threads = initializeArguments(args.Target, args.p, args.t)
+
 
 
 # parameter
@@ -63,7 +64,7 @@ def worker():
         (ip,port) = q.get()
         status = connect(ip, port)
         lock.acquire()
-        results[ports] = status
+        results[port] = status
         lock.release()
         q.task_done()
 
@@ -80,4 +81,4 @@ q.join()
 
 
 for port in ports:
-    print(f"Port {str(port)} is {results[port]}")
+    print(f"Port {port} is {results[port]}")
