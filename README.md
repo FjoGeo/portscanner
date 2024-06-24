@@ -27,3 +27,9 @@ python3 main.py -target 192.168.1.1 -p 20-80 -t 4 -u False -v True
 git clone https://github.com/FjoGeo/portscanner.git
 cd portscanner
 ```
+
+
+## To do
+- Network Discovery
+- OS detection
+- Service Detection
